@@ -7,3 +7,18 @@ export interface IData {
   category: string;
   description: string;
 }
+
+type MealsProps = {
+  meal: IData;
+};
+
+type IInput = {
+  id: number;
+  label: string;
+  input: {
+    type: string;
+    max: number;
+    min: number;
+    defaultvalue: number;
+  };
+};

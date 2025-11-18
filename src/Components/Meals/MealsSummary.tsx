@@ -1,5 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import Meals from "./Meals";
+import { Tooltip } from "../../additional-components/Tooltip";
 
 const data = [
   {
@@ -280,7 +281,9 @@ const MealsCard = () => {
         <Row className="g-2 justify-content-between">
           {data.map((meal) => (
             <Col key={meal.id} xs={12} sm={6} md={4} lg={2}>
+              {/* <Tooltip content={meal.title}> */}
               <Meals key={meal.id} meal={meal} />
+              {/* </Tooltip> */}
             </Col>
           ))}
         </Row>
