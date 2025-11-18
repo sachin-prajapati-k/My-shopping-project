@@ -22,13 +22,13 @@ const Meals = ({ meal }: MealsProps) => {
             <br></br>
             <span>{Price}</span>
             <br />
-            <span>Rating⭐ {rating}</span>
+            <span>Rating ⭐ {rating}</span>
             {/* <Card.Footer> */}
             <span
               style={{
                 position: "absolute",
-                bottom: 0,
-                alignItems: "cener",
+                bottom: "5px",
+                left: "40px",
               }}
             >
               <CartInputFunction
