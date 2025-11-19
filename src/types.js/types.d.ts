@@ -22,3 +22,20 @@ type IInput = {
     defaultvalue: number;
   };
 };
+
+interface ICart {
+  open: boolean;
+  close: () => void | string;
+  img?: string;
+  title?: string;
+  price?: number;
+}
+
+type IHeaderType = {
+  ClickOpen: () => void;
+  ClickClose?: () => void;
+};
+
+type IButtonClick = {
+  onOpen: () => void;
+};

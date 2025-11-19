@@ -12,7 +12,7 @@ const Meals = ({ meal }: MealsProps) => {
 
   return (
     <>
-      <div className="mb-2 ">
+      <div className="mb-2">
         <Card style={{ width: "200px", height: "380px" }}>
           <Card.Img src={image} alt="hello" />
           <Card.Header>{title}</Card.Header>
