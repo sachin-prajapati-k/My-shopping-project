@@ -1,6 +1,5 @@
 import { Col, Row } from "react-bootstrap";
 import Meals from "./Meals";
-import { Tooltip } from "../../additional-components/Tooltip";
 
 const data = [
   {
