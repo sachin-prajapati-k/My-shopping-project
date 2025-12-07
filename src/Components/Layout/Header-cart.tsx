@@ -1,9 +1,14 @@
 import { Button } from "react-bootstrap";
+import { useContext } from "react";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import { IButtonClick } from "../../types.js/types";
-
+import { CartContext } from "../Store/CartContext";
 const CartButton = ({ onOpen }: IButtonClick) => {
+  const cartCtx = useContext(CartContext);
+  const numberOfCartItem = cartCtx.items.reduce((curNumber, item) => {
+    return curNumber + (item as { amount: number }).amount;
+  }, 1);
   return (
     <>
       <Button
@@ -15,7 +20,7 @@ const CartButton = ({ onOpen }: IButtonClick) => {
         {"\u00A0"}
         <Badge
           color="success"
-          badgeContent={2}
+          badgeContent={numberOfCartItem}
           overlap="circular"
           className="me-1"
         />

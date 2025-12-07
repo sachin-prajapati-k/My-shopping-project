@@ -1,4 +1,5 @@
 export interface IData {
+  addToCart: any;
   id: number;
   title: string;
   price: number;
@@ -15,6 +16,8 @@ type MealsProps = {
 type IInput = {
   id: number;
   label: string;
+  ref: any;
+  onSubmit: any;
   input: {
     type: string;
     max: number;
@@ -26,9 +29,11 @@ type IInput = {
 interface ICart {
   open: boolean;
   close: () => void | string;
-  img?: string;
-  title?: string;
-  price?: number;
+  props: {
+    img?: string;
+    title?: string;
+    price?: number;
+  };
 }
 
 type IHeaderType = {

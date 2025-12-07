@@ -7,17 +7,19 @@ import { useState } from "react";
 
 import CartProvider from "./Components/Store/CartProvider";
 function App() {
-  const [isOpen, setClose] = useState(false);
-  const handleOpen = () => setClose(true);
-  const handleClose = () => setClose(false);
+  const [isOpen, setIsOpen] = useState(false); // renamed setter
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
   return (
-    <CartProvider>
-      <Header ClickOpen={handleOpen} />
-      <main>
-        <MealCard />
-        <Cart open={isOpen} close={handleClose} />
-      </main>
-    </CartProvider>
+    <>
+      <CartProvider>
+        <Header ClickOpen={handleOpen} />
+        <main>
+          <MealCard />
+          <Cart open={isOpen} close={handleClose} />
+        </main>
+      </CartProvider>
+    </>
   );
 }
 
