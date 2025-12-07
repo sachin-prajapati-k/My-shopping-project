@@ -8,7 +8,7 @@ const CartButton = ({ onOpen }: IButtonClick) => {
   const cartCtx = useContext(CartContext);
   const numberOfCartItem = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + (item as { amount: number }).amount;
-  }, 1);
+  }, 0);
   return (
     <>
       <Button

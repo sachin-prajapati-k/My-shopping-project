@@ -27,11 +27,27 @@ type CartAction = { type: "ADD"; item: CartItem } | { type: "REMOVE"; id: any };
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   if (action.type === "ADD") {
-    const updateItems = state.items.concat(action.item);
+    const existingItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+
+    let updatedItems: CartItem[];
+    if (existingItemIndex >= 0) {
+      // Item already exists, update the amount
+      updatedItems = [...state.items];
+      updatedItems[existingItemIndex] = {
+        ...updatedItems[existingItemIndex],
+        amount: updatedItems[existingItemIndex].amount + action.item.amount,
+      };
+    } else {
+      // New item, add it to the cart
+      updatedItems = state.items.concat(action.item);
+    }
+
     const updateTotalPrice =
       state.totalPrice + action.item.price * action.item.amount;
     return {
-      items: updateItems,
+      items: updatedItems,
       totalPrice: updateTotalPrice,
     };
   }

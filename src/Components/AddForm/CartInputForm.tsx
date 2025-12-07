@@ -1,22 +1,30 @@
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { IInput } from "../../types.js/types";
-import { useRef } from "react";
+import { forwardRef } from "react";
 
-export default function CartInputFunction(
-  props: IInput,
-  ref: IInput,
-  onSubmit: IInput
-) {
+const CartInputFunction = forwardRef<HTMLInputElement, IInput>((props, ref) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (props.onSubmit) {
+      props.onSubmit(e as any);
+    }
+  };
+
   return (
     <>
-      <Form style={{ width: "100%" }}>
+      <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
         <InputGroup>
-          {/* <InputGroup.Text> {props.label}</InputGroup.Text> */}
           <Form.Label>Amount</Form.Label>
-          <Form.Control {...props.input} ref={ref as any} />
-          <Button variant="primary">+ Add</Button>
+          <Form.Control {...props.input} ref={ref} />
+          <Button type="submit" variant="primary">
+            + Add
+          </Button>
         </InputGroup>
       </Form>
     </>
   );
-}
+});
+
+CartInputFunction.displayName = "CartInputFunction";
+
+export default CartInputFunction;

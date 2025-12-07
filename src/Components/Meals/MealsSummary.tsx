@@ -1,5 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import Meals from "./Meals";
+import { useContext } from "react";
+import { CartContext } from "../Store/CartContext";
 
 const data = [
   {
@@ -274,6 +276,8 @@ const data = [
   },
 ];
 const MealsCard = () => {
+  const cartCtx = useContext(CartContext);
+
   return (
     <>
       <div className="container-fluid">
@@ -281,7 +285,10 @@ const MealsCard = () => {
           {data.map((meal) => (
             <Col key={meal.id} xs={12} sm={6} md={4} lg={2}>
               {/* <Tooltip content={meal.title}> */}
-              <Meals key={meal.id} meal={meal} />
+              <Meals
+                key={meal.id}
+                meal={{ ...meal, addToCart: cartCtx.addToCart }}
+              />
               {/* </Tooltip> */}
             </Col>
           ))}
